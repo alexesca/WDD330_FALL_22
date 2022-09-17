@@ -1,3 +1,3 @@
 # WDD332
 
-My portfolio.
+My portfolio. Here, I am gonna published all my assignments and notes. 
