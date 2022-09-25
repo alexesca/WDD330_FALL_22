@@ -5,6 +5,10 @@ function loadContentTable() {
                 {
                     label: "W01",
                     url: "W01/Local Storage/index.html"
+                },
+                {
+                    label: "W02",
+                    url: "W02/team.html"
                 }
             ];
 
