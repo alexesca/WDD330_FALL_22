@@ -17,8 +17,8 @@ function loadContentTable() {
             links.map(item => {    
                 var li = document.createElement('li');
                 var a = createLink(item.label, item.url);
-                entry.appendChild(a);
-                list.appendChild(entry);
+                li.appendChild(a);
+                ol.appendChild(li);
             })
         
         }
@@ -30,5 +30,5 @@ function loadContentTable() {
             a.appendChild(linkText);
             a.title = title;
             a.href = link;
-            document.body.appendChild(a);
+            return a;
         }
