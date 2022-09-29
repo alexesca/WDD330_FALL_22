@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Justice League</title>
+</head>
+
+<body>
+    <header>
+        <h1 id='title'>Justice League</h1>
+    </header>
+    <ul id='roster'>
+        <li class='hero'>Superman</li>
+        <li class='vigilante hero' id='bats'>Batman</li>
+        <li class='hero'>Wonder Woman</li>
+    </ul>
+</body>
+
+    <script>
+        const h1 = document.getElementById('title');
+        const listItems = document.getElementsByTagName('li');
+        document.querySelectorAll('.hero');
+        document.querySelector('#bats');
+        const wonderWoman = document.querySelector('li:last-child');
+
+        const heroes = document.getElementById('roster');
+        console.log(heroes.childNodes);
+        console.log(heroes.firstChild);
+        console.log(heroes.lastChild);
+
+        const textNode = wonderWoman.firstChild;
+        const nodeValue = textNode.nodeValue;;
+        const textContent = wonderWoman.textContent;
+        console.log(textNode)
+        console.log(nodeValue)
+        console.log(textContent)
+
+
+        const classAttr = wonderWoman.getAttribute('class');
+        console.log(classAttr)
+
+
+        wonderWoman.setAttribute('class', 'villain');
+        wonderWoman.getAttribute('class');
+
+        function createElement(tag, text) {
+                const el = document.createElement(tag);
+                el.textContent = text;
+                return el
+            }
+
+        const aquaman = createElement('li', 'Aquaman');
+
+        heroes.appendChild(aquaman)
+
+        heroes.removeChild(wonderWoman);
+            
+        const superman = heroes.children[0];
+        superman.style.border = "red 2px solid";
+
+
+    </script>
+
+</html>
