@@ -9,6 +9,10 @@ function loadContentTable() {
                 {
                     label: "W02",
                     url: "W02/team.html"
+                },
+                {
+                    label: "W03",
+                    url: "W03/index.html"
                 }
             ];
 
