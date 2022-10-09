@@ -32,7 +32,9 @@ function search(event) {
             powers,
             category)
     }
-    alert(JSON.stringify(hero))
+    alert(JSON.stringify(hero));
+    console.log("Kills");
+    console.log(Hero.calculateKills())
     hero.feed().train().sleep();
 }
 
@@ -69,4 +71,31 @@ class Hero {
         return this;
     }
 
+    static calculateKills() {
+        return mean([1,23,12,3]);
+    }
+
+}
+
+
+
+// Nice things to be implemented from chapter 15
+
+/**
+ * jQuery
+ */
+
+function jQueryProperty() {
+    $(para).addClass('important').append('<p>Another Paragraph</p>');
+}
+
+function lodashFuncs() {
+    // flatten an array
+    _.flatten([1, [2, [3, [4]], 5]]);
+
+    // return the last element in an array
+    _.last([1, 2, 3]);
+
+    // randomly shuffle an array
+    _.shuffle([1, 2, 3, 4]);
 }
