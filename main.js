@@ -13,6 +13,10 @@ function loadContentTable() {
                 {
                     label: "W03",
                     url: "W03/index.html"
+                },
+                {
+                    label: "W04",
+                    url: "W04/chapter8.html"
                 }
             ];
 

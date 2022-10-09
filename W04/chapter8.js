@@ -72,7 +72,7 @@ class Hero {
     }
 
     static calculateKills() {
-        return mean([1,23,12,3]);
+        // return mean([1,23,12,3]);
     }
 
 }
