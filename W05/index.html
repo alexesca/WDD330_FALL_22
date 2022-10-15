@@ -1,0 +1,33 @@
+<h1 id="w05-notes">W05 Notes</h1>
+<p>Since the nature of this week&#39;s reading was about debugging,
+    I decided to take notes in order to remember the most important topics I would like to remember.</p>
+<h2 id="debugging">Debugging</h2>
+<ol>
+    <li>Use strict mode to avoid sloppy code. &#39;use strict&#39;; at the top of each file or function.</li>
+    <li>Use the self-enclosing function to put your entire JS code to avoid conflict with third-party libs.</li>
+    <li>Use linting tools to help you write better code in dev and/or at runtime.</li>
+</ol>
+<h2 id="debugging-in-the-browser">Debugging in the browser</h2>
+<ol>
+    <li>Alert dialogs <strong>alert()</strong> are an easy way to display a message to the user or as a dev tool to get feedback that the code is reaching that line</li>
+    <li>Alert dialogs also have confirmation and prompt dialogs to help capture data in an easy way.</li>
+    <li><strong>console.log()</strong> is a great way to print values, let us know if our code is being executed, or just for documentation.</li>
+    <li>I love Google Chrome dev tools. I love that I can put conditional break points to pause the execution of my code on a given condition.</li>
+    <li>Conditional breakpoints are great when we need to debug a code that has many iterations, but we care only about one case in specific.</li>
+    <li>Such as printing a list of names. We might want to debug the printing logic for names with special characters. We can use regular expressions or conditions to pause the execution when a name with special characters is found. </li>
+</ol>
+<p><img src="./conditional-breakpoint.gif" alt="Tux, the Linux mascot"></p>
+<ol>
+    <li>Errors are a good way to let developers or users know about a specific issue. Using typed errors allows us to create default exceptions for business and logic errors. We can use the name of the type or the message to quickly find the line that threw it.</li>
+    <li>Using appropriate errors help us make a code more readable. Throwing a range error <strong>RangeError()</strong> when a numeric exception happened is better than just throwing a generic error.</li>
+    <li>Try, catch, and finally are an excellent way for us to plan for things that can go wrong, give users a way to proceed without disrupting their session, and preventing server or app crashes.</li>
+    <li>Finally guarantees that the code we put inside its scope is gonna get executed.</li>
+</ol>
+<h2 id="testing">Testing</h2>
+<ol>
+    <li>Red, green, refactoring helps us create the mentality about writting test first, before diving into the actual code. </li>
+    <li>Testing can save us time. By writing a  quick test to validate our logic we can catch errors before deploying to production.</li>
+    <li>Regression tests can help us prevent previous errors from repeating. </li>
+    <li>Testing can make our code easier to maintain because when dependencies are hard to test, it is an indicator that we need to decouple our code even more.</li>
+    <li>Testing can make our code more readable because we tend to write smaller functions when we write tests for them, they are documented, the other developers can see the input and output of the function, and can make changes with the assurance that the test will pass once the refactoring is done and nothing else will break :)</li>
+</ol>

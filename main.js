@@ -17,6 +17,10 @@ function loadContentTable() {
                 {
                     label: "W04",
                     url: "W04/chapter8.html"
+                },
+                {
+                    label: "W05",
+                    url: "W05/chapter8.html"
                 }
             ];
 
