@@ -20,7 +20,7 @@ function loadContentTable() {
                 },
                 {
                     label: "W05",
-                    url: "W05/chapter8.html"
+                    url: "W05/index.html"
                 }
             ];
 
