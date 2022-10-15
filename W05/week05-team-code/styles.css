@@ -1,0 +1,35 @@
+h1 {
+    font-size: 3rem;
+    border: 2px solid black;
+    text-align: center;
+    padding: 20px;
+    background-color: aqua;
+}
+
+h2 {
+    border: 2px solid black;
+    text-align: center;
+    background-color: pink;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+.hikeStyles {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.image {
+    width: 50%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    column-gap: 150px;
+    padding: 35px;
+}
+
