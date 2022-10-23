@@ -8,7 +8,7 @@ const todoList = document.getElementById("todo-list")
 const fragment = new DocumentFragment();
 
 let count = 0;
-const todos = []
+const todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 addBtn.addEventListener("click", addEventListenerToAddBtn);
 allBtn.addEventListener("click", showAllTodos);
@@ -25,6 +25,7 @@ function addEventListenerToAddBtn(event) {
     appendFragmentToList(todo, fragment);
     todoInput.value = "";
     todoInput.focus();
+    updateLocalStorage(todos);
 }
 
 function addEventListenerToTodoList(event) {
@@ -63,6 +64,7 @@ function changeTodoStatus(event) {
     const index = todos.findIndex(todo => todo.id === searchId);
     const currentTodo = todos[index];
     currentTodo.completed = !currentTodo.complete;
+    updateLocalStorage(todos);
 }
 
 function createLabel(todo, checkboxName) {
@@ -95,4 +97,8 @@ function showIncompleteTodos() {
     todos
         .filter(todo => !todo.completed)
         .forEach(todo => appendFragmentToList(todo, fragment));
+}
+
+function updateLocalStorage(todos) {
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
