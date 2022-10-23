@@ -1,11 +1,19 @@
 const addBtn = document.getElementById("add-btn");
+const allBtn = document.getElementById("all-btn");
+const completeBtn = document.getElementById("complete-btn");
+const incompleteBtn = document.getElementById("incomplete-btn");
+
 const todoInput = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list")
 const fragment = new DocumentFragment();
+
 let count = 0;
 const todos = []
 
 addBtn.addEventListener("click", addEventListenerToAddBtn);
+allBtn.addEventListener("click", showAllTodos);
+completeBtn.addEventListener("click", showCompletedTodos);
+incompleteBtn.addEventListener("click", showIncompleteTodos);
 todoList.addEventListener("dblclick", addEventListenerToTodoList);
 
 function addEventListenerToAddBtn(event) {
@@ -26,9 +34,8 @@ function addEventListenerToTodoList(event) {
 
 function createListItemNode(todo) {
     const listItem = document.createElement('li');
-    const label = document.createElement('label');
     const checkbox = createTodoCheckBox(todo);
-    label.textContent = todo.content;
+    const label = createLabel(todo, checkbox.id);
     listItem.appendChild(label);
     listItem.appendChild(checkbox);
     listItem.setAttribute('id', todo.id);
@@ -46,5 +53,45 @@ function createTodoCheckBox(todo) {
     checkbox.id = "todo-checkbox-" + todo.id;
     checkbox.type = 'checkbox';
     checkbox.checked = todo.completed;
+    checkbox.onclick = changeTodoStatus;
     return checkbox;
+}
+
+function changeTodoStatus(event) {
+    const searchId = parseInt(event.target.parentElement.id);
+    const index = todos.findIndex(todo => todo.id === searchId);
+    const currentTodo = todos[index];
+    currentTodo.completed = !currentTodo.complete;
+}
+
+function createLabel(todo, checkboxName) {
+    const label = document.createElement('label');
+    label.textContent = todo.content;
+    label.setAttribute('for', checkboxName);
+    return label;
+}
+
+function removeAllTodosFromList(el) {
+    while(el.hasChildNodes()) {
+        el.removeChild(el.lastChild);
+    }
+}
+
+function showAllTodos() {
+    removeAllTodosFromList(todoList);
+    todos.forEach(todo => appendFragmentToList(todo, fragment));
+}
+
+function showCompletedTodos() {
+    removeAllTodosFromList(todoList);
+    todos
+        .filter(todo => todo.completed)
+        .forEach(todo => appendFragmentToList(todo, fragment));
+}
+
+function showIncompleteTodos() {
+    removeAllTodosFromList(todoList);
+    todos
+        .filter(todo => !todo.completed)
+        .forEach(todo => appendFragmentToList(todo, fragment));
 }
