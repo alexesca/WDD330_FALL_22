@@ -30,9 +30,10 @@ function addEventListenerToAddBtn(event) {
 
 function addEventListenerToTodoList(event) {
     event.preventDefault();
-    const li = event.target.parentElement;
+    deleteTodo(event);
+    const li = event.target;
     todoList.removeChild(li);
-;}
+}
 
 function createListItemNode(todo) {
     const listItem = document.createElement('li');
@@ -101,6 +102,13 @@ function showIncompleteTodos() {
 
 function updateLocalStorage(todos) {
     localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function deleteTodo(event) {
+    const searchId = parseInt(event.target.parentElement.id);
+    const index = todos.findIndex(todo => todo.id === searchId);
+    todos.splice(index, 1);
+    updateLocalStorage(todos);
 }
 
 
