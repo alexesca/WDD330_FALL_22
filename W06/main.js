@@ -102,3 +102,12 @@ function showIncompleteTodos() {
 function updateLocalStorage(todos) {
     localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+
+/**
+ * Render todos
+ */
+removeAllTodosFromList(todoList);
+todos
+    .filter(todo => todo)
+    .forEach(todo => appendFragmentToList(todo, fragment));
