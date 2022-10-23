@@ -27,8 +27,10 @@ function addEventListenerToTodoList(event) {
 function createListItemNode(todo) {
     const listItem = document.createElement('li');
     const label = document.createElement('label');
+    const checkbox = createTodoCheckBox(todo);
     label.textContent = todo.content;
     listItem.appendChild(label);
+    listItem.appendChild(checkbox);
     listItem.setAttribute('id', todo.id);
     return listItem;
 }
@@ -39,3 +41,10 @@ function appendFragmentToList(todo, fragment) {
     todoList.appendChild(fragment);
 }
 
+function createTodoCheckBox(todo) {
+    const checkbox = document.createElement('input');
+    checkbox.id = "todo-checkbox-" + todo.id;
+    checkbox.type = 'checkbox';
+    checkbox.checked = todo.completed;
+    return checkbox;
+}
