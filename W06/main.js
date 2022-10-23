@@ -6,6 +6,7 @@ let count = 0;
 const todos = []
 
 addBtn.addEventListener("click", addEventListenerToAddBtn);
+todoList.addEventListener("dblclick", addEventListenerToTodoList);
 
 function addEventListenerToAddBtn(event) {
     event.preventDefault();
@@ -17,11 +18,18 @@ function addEventListenerToAddBtn(event) {
     todoInput.focus();
 }
 
+function addEventListenerToTodoList(event) {
+    event.preventDefault();
+    const li = event.target.parentElement;
+    todoList.removeChild(li);
+;}
+
 function createListItemNode(todo) {
     const listItem = document.createElement('li');
     const label = document.createElement('label');
     label.textContent = todo.content;
     listItem.appendChild(label);
+    listItem.setAttribute('id', todo.id);
     return listItem;
 }
 
@@ -30,3 +38,4 @@ function appendFragmentToList(todo, fragment) {
     fragment.appendChild(todoNode);
     todoList.appendChild(fragment);
 }
+
