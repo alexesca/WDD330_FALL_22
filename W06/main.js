@@ -19,6 +19,7 @@ todoList.addEventListener("dblclick", addEventListenerToTodoList);
 function addEventListenerToAddBtn(event) {
     event.preventDefault();
     const todoName = todoInput.value;
+    if(!todoName) return alert("Enter a valid todo.");
     const todo = { id : count++, content: todoName, completed: false }
     todos.push(todo);
     appendFragmentToList(todo, fragment);
