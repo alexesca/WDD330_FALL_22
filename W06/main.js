@@ -13,6 +13,8 @@ function addEventListenerToAddBtn(event) {
     const todo = { id : count++, content: todoName, completed: false }
     todos.push(todo);
     appendFragmentToList(todo, fragment);
+    todoInput.value = "";
+    todoInput.focus();
 }
 
 function createListItemNode(todo) {
