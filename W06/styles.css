@@ -1,3 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    max-width: 700px!important;
+}
+
+.filter-btns {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=text] {
+    min-width: 500px;
+}
+
+
 /* Labels for checked inputs */
 input:checked + label {
     color: red;
@@ -8,4 +43,19 @@ input[type="checkbox"]:checked {
     box-shadow: 0 0 0 3px hotpink;
 }
 
+
+ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 3em;
+    border-bottom: 1px solid gray;
+}
 
