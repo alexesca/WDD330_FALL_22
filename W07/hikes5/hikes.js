@@ -2,7 +2,7 @@ const comments = [
   {
     name: "Bechler Falls",
     date: new Date(),
-    content: "This is an awesome hike!!!"
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
     name: "Teton Canyon",
@@ -79,6 +79,7 @@ export default class Hikes {
     const hike = this.getHikeByName(hikeName);
     this.parentElement.innerHTML = '';
     this.parentElement.appendChild(renderOneHikeFull(hike, comments));
+    this.parentElement.appendChild(renderCommentList(this.parentElement, comments));
     // show the back button
     this.backButton.classList.remove('hidden');
   }
@@ -131,7 +132,7 @@ function renderOneHikeLight(hike) {
 
   return item;
 }
-function renderOneHikeFull(hike, comments) {
+function renderOneHikeFull(hike) {
   const item = document.createElement('li');
   item.innerHTML = ` 
     
@@ -153,19 +154,33 @@ function renderOneHikeFull(hike, comments) {
             <h3>How to get there</h3>
             <p>${hike.directions}</p>
         </div>
-        ${renderOneComment(comments[0])}
     `;
   return item;
 }
 
+
+/**
+ * Comments
+ */
+
+// Renders comment list
+function renderCommentList(parent, comments) {
+  comments.forEach(comment => {
+    parent.appendChild(renderOneComment(comment));
+  });
+}
+
+// Renders one comment
+
 function renderOneComment(comment) {
   const item = document.createElement('div');
+  item.setAttribute("id", "comment-container")
   item.innerHTML = `
-    <div>
+    <div id="title">
         <p>${comment.name}</p>
         <p>${comment.date}</p>
     </div>
-    <div>
+    <div id="comment">
         <p>${comment.content}</p>
     </div>
   `;
