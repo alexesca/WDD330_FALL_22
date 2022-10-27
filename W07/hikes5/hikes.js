@@ -1,16 +1,3 @@
-const comments = [
-  {
-    name: "Bechler Falls",
-    date: new Date(),
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    name: "Teton Canyon",
-    date: new Date(),
-    content: "This is an awesome hike 2!!!"
-  }
-]
-
 // Example of using Classes and modules to organize the code needed to render our list of hikes. Not using MVC here.
 
 //create an array of hikes
@@ -70,8 +57,9 @@ export default class Hikes {
     this.parentElement.innerHTML = '';
     // notice that we use our getter above to grab the list instead of getting it directly...this makes it easier on us if our data source changes...
     renderHikeList(this.parentElement, this.getAllHikes());
-    this.addHikeListener();
-    renderCommentList(this.parentElement, comments);
+    this.addHikeListener()
+    const comments = localStorage.getItem("comments");
+    renderCommentList(this.parentElement, JSON.parse(comments));
     // make sure the back button is hidden
     this.backButton.classList.add('hidden');
   }

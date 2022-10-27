@@ -119,3 +119,4 @@ removeAllTodosFromList(todoList);
 todos
     .filter(todo => todo)
     .forEach(todo => appendFragmentToList(todo, fragment));
+
