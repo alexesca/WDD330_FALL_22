@@ -1,3 +1,4 @@
+import Comment from './comments.js';
 // Example of using Classes and modules to organize the code needed to render our list of hikes. Not using MVC here.
 
 //create an array of hikes
@@ -57,7 +58,7 @@ export default class Hikes {
     this.parentElement.innerHTML = '';
     // notice that we use our getter above to grab the list instead of getting it directly...this makes it easier on us if our data source changes...
     renderHikeList(this.parentElement, this.getAllHikes());
-    this.addHikeListener()
+    this.addHikeListener();
     const comments = localStorage.getItem("comments");
     renderCommentList(this.parentElement, JSON.parse(comments));
     // make sure the back button is hidden
@@ -65,11 +66,16 @@ export default class Hikes {
   }
   // show one hike with full details in the parentElement
   showOneHike(hikeName) {
+
     const hike = this.getHikeByName(hikeName);
     this.parentElement.innerHTML = '';
-    this.parentElement.appendChild(renderOneHikeFull(hike, comments));
+    this.parentElement.appendChild(renderOneHikeFull(hike));
+    this.parentElement.appendChild(addOneComment());
     // show the back button
     this.backButton.classList.remove('hidden');
+
+    // Add listener to comment submit
+    addCommentListener();
   }
   // in order to show the details of a hike ontouchend we will need to attach a listener AFTER the list of hikes has been built. The function below does that.
   addHikeListener() {
@@ -151,6 +157,30 @@ function renderOneHikeFull(hike) {
  * Comments
  */
 
+
+function addCommentListener() {
+  const btn = document.getElementById('submit-comment-btn');
+  btn.addEventListener('click', addNewComment);
+}
+
+function addNewComment() {
+  const hikeName = document.querySelector('h2').innerHTML;
+
+
+  let comments = localStorage.getItem("comments");
+  comments = JSON.parse(comments);
+
+  const textArea = document.getElementById('comment-textarea');
+  const commentText = textArea.value;
+  const date = new Date();
+  const TYPE = "hike";
+  const comment = new Comment(hikeName, date, commentText, TYPE);
+
+  comments.push(comment)
+
+  localStorage.setItem("comments", JSON.stringify(comments))
+}
+
 // Renders comment list
 function renderCommentList(parent, comments) {
   comments.forEach(comment => {
@@ -174,3 +204,16 @@ function renderOneComment(comment) {
   `;
   return item;
 }
+
+function addOneComment() {
+  const div = document.createElement('div');
+  div.innerHTML = `
+    <label for="comment-textarea">Enter your comment:</label>
+    <textarea id="comment-textarea"></textarea>
+    <button type="submit" id="submit-comment-btn">SUBMIT</button>
+  `;
+  return div;
+}
+
+
+
