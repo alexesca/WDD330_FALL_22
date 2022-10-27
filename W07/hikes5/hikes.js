@@ -71,6 +71,7 @@ export default class Hikes {
     // notice that we use our getter above to grab the list instead of getting it directly...this makes it easier on us if our data source changes...
     renderHikeList(this.parentElement, this.getAllHikes());
     this.addHikeListener();
+    renderCommentList(this.parentElement, comments);
     // make sure the back button is hidden
     this.backButton.classList.add('hidden');
   }
@@ -79,7 +80,6 @@ export default class Hikes {
     const hike = this.getHikeByName(hikeName);
     this.parentElement.innerHTML = '';
     this.parentElement.appendChild(renderOneHikeFull(hike, comments));
-    this.parentElement.appendChild(renderCommentList(this.parentElement, comments));
     // show the back button
     this.backButton.classList.remove('hidden');
   }
