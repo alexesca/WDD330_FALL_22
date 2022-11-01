@@ -21,6 +21,14 @@ function loadContentTable() {
                 {
                     label: "W05",
                     url: "W05/index.html"
+                },
+                {
+                    label: "W06",
+                    url: "W06/index.html"
+                },
+                {
+                    label: "W07",
+                    url: "W07/hikes5/hiking-complete.html"
                 }
             ];
 
