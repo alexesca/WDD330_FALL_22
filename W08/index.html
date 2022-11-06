@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script></script>
+    <style>
+        h1 {
+            -webkit-transform: translate(45px,-45px); /* iOS8, Android ↵4.4.3, BB10 */
+            -ms-transform: translate(45px,-45px); /* IE9 only */
+            transform: translate(45px,-45px);
+            transform: translateX(45px);
+        }
+
+        .ad-ad2 h1:hover span {
+            color: #484848;
+            transform: translateX(40px);
+        }
+
+        .ad-ad2 h1 span {
+            font-size: 30px;
+            color: #999999;
+            display: inline-block;
+        }
+
+        .ad-ad2 h1:hover span {
+            color: #484848;
+            transform: translateX(40px) scale(1.5);
+        }
+
+        .ad-ad2 h1:hover span {
+            color: #484848;
+            transform: rotate(10deg) translateX(40px) scale(1.5);
+        }
+
+        .ad-ad2 h1 span {
+            -webkit-transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-duration: 0.2s;
+        }
+
+        .ad-ad2 h1 span {
+            transition-property: transform;
+            transition-duration: 0.2s;
+            transition-timing-function: ease-out;
+            transition-delay: 50ms;
+        }
+
+        @keyframes bike {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -360px 0;
+            }
+        }
+        @keyframes move {
+            0% {
+                transform: translateX(-100px);
+            }
+            100% {
+                transform: translateX(100px);
+            }
+        }
+
+        h2:after {
+            content: '';
+            width: 90px;
+            height: 92px;
+            background-image: url(../images/bike_sprite.png);
+            display: block;
+            margin: auto;
+            animation:
+                    0.4s steps(4, end) infinite 50ms bike,
+                    8s linear infinite 50ms move;
+            animation-play-state: paused;
+        }
+        h2:hover:after {
+            animation-play-state: running;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello World</h1>
+<br>
+<div class="ad-ad2">
+    <h1>Put your <span>dukes</span> up, sire</h1>
+</div>
+<br>
+<h2></h2>
+</body>
+</html>
