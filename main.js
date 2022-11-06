@@ -29,6 +29,10 @@ function loadContentTable() {
                 {
                     label: "W07",
                     url: "W07/hikes5/hiking-complete.html"
+                },
+                {
+                    label: 'W08',
+                    url: 'W08/TeamActivity'
                 }
             ];
 
