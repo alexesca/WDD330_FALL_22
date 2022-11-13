@@ -33,6 +33,10 @@ function loadContentTable() {
                 {
                     label: 'W08',
                     url: 'W08/TeamActivity'
+                },
+                {
+                    label: 'W09',
+                    url: 'W09'
                 }
             ];
 
