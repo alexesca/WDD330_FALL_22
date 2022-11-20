@@ -37,6 +37,10 @@ function loadContentTable() {
                 {
                     label: 'W09',
                     url: 'W09'
+                },
+                {
+                    label: 'W10',
+                    url: 'W10'
                 }
             ];
 
