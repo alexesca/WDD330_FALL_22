@@ -41,18 +41,26 @@ function loadContentTable() {
                 {
                     label: 'W10',
                     url: 'W10'
+                },
+                {
+                    label: 'W11',
+                    url: 'W11/client/week11.html'
+                },
+                {
+                    label: 'W14',
+                    url: 'W14'
                 }
             ];
 
             var ol = document.getElementById('content-table');
 
-            links.map(item => {    
+            links.map(item => {
                 var li = document.createElement('li');
                 var a = createLink(item.label, item.url);
                 li.appendChild(a);
                 ol.appendChild(li);
             })
-        
+
         }
 
         function createLink(title, link) {
