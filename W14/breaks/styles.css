@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    max-width: 700px!important;
+    font-family: Arial, sans-serif;
+}
+
+.filter-btns {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    column-gap: 30px;
+}
+
+button {
+    background-color: #FFB703; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input[type=text] {
+    min-width: 500px;
+}
+
+
+/* Labels for checked inputs */
+input:checked + label {
+    color: red;
+}
+
+/* Checkbox element, when checked */
+input[type="checkbox"]:checked {
+    box-shadow: 0 0 0 3px #FFB703;
+}
+
+
+ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 3em;
+    border-bottom: 1px solid #FB8500;
+    color: #FFFFFF;
+}
+
+
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 64px; font-weight: 700; line-height: 64px; margin: 0 0 0; padding: 5px; text-align: left; text-transform: uppercase; }

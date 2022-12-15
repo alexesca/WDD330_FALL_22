@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Session</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <div class="title">
+        <h1>My Session</h1>
+    </div>
+    <div class="timer">
+        <div class="hours">
+            <label for="hours">Hours</label>
+            <select name="cars" id="hours"></select>
+        </div>
+        <div class="minutes">
+            <label for="minutes">Minutes</label>
+            <select name="cars" id="minutes"></select>
+        </div>
+        <div class="seconds">
+            <label for="seconds">Seconds</label>
+
+            <select name="cars" id="seconds"></select>
+        </div>
+    </div>
+    <div class="breaks">
+        <div class="section">
+            <ul id="break-list"></ul>
+        </div>
+    </div>
+    <div class="action">
+        <button onclick="startSession()">Start Session</button>
+    </div>
+</div>
+
+</body>
+
+<script>
+
+    const fragment = new DocumentFragment();
+
+    const hourSelect = document.getElementById('hours');
+    const minuteSelect = document.getElementById('minutes');
+    const secondSelect = document.getElementById('seconds');
+
+    addOptionsToSelectElement(0, 24, hourSelect);
+    addOptionsToSelectElement(0, 60, minuteSelect);
+    addOptionsToSelectElement(0, 60, secondSelect);
+
+    function addOptionsToSelectElement(start, end, selectElement) {
+        df = document.createDocumentFragment();
+        for (i = start; i < end; i++) {
+            var option = document.createElement('option'); // create the option element
+            option.value = i; // set the value property
+            option.appendChild(document.createTextNode(i));
+            df.appendChild(option);
+        }
+        selectElement.appendChild(df);
+    }
+
+
+    /**
+     * Breaks
+     */
+    const breakList = document.getElementById("break-list");
+    breaks = JSON.parse(localStorage.getItem("breaks")) || [];
+
+    /**
+     * Render breaks
+     */
+    function removeAllTodosFromList(el) {
+        while (el.hasChildNodes()) {
+            el.removeChild(el.lastChild);
+        }
+    }
+
+    function updateLocalStorage(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+
+    function createTodoCheckBox(todo) {
+        const checkbox = document.createElement('input');
+        checkbox.id = "todo-checkbox-" + todo.id;
+        checkbox.type = 'checkbox';
+        checkbox.onclick = changeTodoStatus;
+        return checkbox;
+    }
+
+    function changeTodoStatus(event) {
+        const searchId = parseInt(event.target.parentElement.id);
+        const index = breaks.findIndex(todo => todo.id === searchId);
+        const currentTodo = breaks[index];
+        currentTodo.selected = event.target.checked;
+        // updateLocalStorage(todos);
+    }
+
+    function createLabel(todo, checkboxName) {
+        const label = document.createElement('label');
+        label.textContent = todo.content;
+        label.setAttribute('for', checkboxName);
+        return label;
+    }
+
+    function createListItemNode(todo) {
+        const listItem = document.createElement('li');
+        const checkbox = createTodoCheckBox(todo);
+        const label = createLabel(todo, checkbox.id);
+        listItem.appendChild(label);
+        listItem.appendChild(checkbox);
+        listItem.setAttribute('id', todo.id);
+        return listItem;
+    }
+
+    function appendFragmentToList(todo, fragment) {
+        const todoNode = createListItemNode(todo);
+        fragment.appendChild(todoNode);
+        breakList.appendChild(fragment);
+    }
+
+    removeAllTodosFromList(breakList);
+    breaks
+        .filter(b => b)
+        .forEach(b => appendFragmentToList(b, fragment));
+
+
+
+    function startSession() {
+        const selectedBreaks = breaks.filter(b => b.selected);
+        if(!selectedBreaks || selectedBreaks.length === 0) return alert("Select at least one valid break.")
+        const hours = +hourSelect.value;
+        const mins = +minuteSelect.value;
+        const secs = +secondSelect.value;
+        const length = (hours * 60 * 60) + (mins * 60) + secs;
+        if(length === 0) return alert("Select a valid session duration time.")
+
+        const session = {
+            length,
+            breaks: selectedBreaks
+        }
+        updateLocalStorage("session", session)
+
+
+        var anchor = document.createElement('a');
+        anchor.href = '../timer';
+        anchor.target="iframe_a";
+        anchor.click();
+    }
+</script>
+</html>

@@ -1,0 +1,150 @@
+body {
+    display: grid;
+    height: 100vh;
+    place-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #023047;
+}
+
+.base-timer {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.base-timer__svg {
+    transform: scaleX(-1);
+}
+
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+
+.base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+}
+
+.base-timer__path-remaining.green {
+    color: #FFB703;
+}
+
+.base-timer__path-remaining.orange {
+    color: orange;
+}
+
+.base-timer__path-remaining.red {
+    color: red;
+}
+
+.base-timer__label {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: #FFFFFF;
+}
+
+#resume-pause-button {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+.info-msg,
+.success-msg,
+.warning-msg,
+.error-msg {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+}
+.info-msg {
+    color: #059;
+    background-color: #BEF;
+}
+.success-msg {
+    color: #270;
+    background-color: #DFF2BF;
+}
+.warning-msg {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+.error-msg {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+
+
+button {
+    background-color: #8ECAE6; /* Green */
+    border: none;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #FB8500; /* Green */
+    cursor: pointer;
+}
+
+
+blockquote {
+    color: #FFFFFF;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 2em;
+    border-left: 10px solid #FB8500;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #fff;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote:after {
+    color: #fff;
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
+
+#quote-author {
+    color: #FFFFFF;
+    font-size: 1em;
+    align-self: flex-end;
+}
